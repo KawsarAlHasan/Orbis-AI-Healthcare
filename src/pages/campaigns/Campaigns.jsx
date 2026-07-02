@@ -1,15 +1,10 @@
 import React from "react";
 import { Switch } from "antd";
-import {
-  FiPlus,
-  FiEye,
-  FiEdit2,
-  FiCopy,
-  FiPlay,
-  FiInfo,
-} from "react-icons/fi";
+import { FiPlus, FiEye, FiEdit2, FiCopy, FiPlay, FiInfo } from "react-icons/fi";
 import { FaMeta } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
+import NewCampainModal from "./NewCampainModal";
+import EditCampainModal from "./EditCampainModal";
 
 // ---------- Fake data ----------
 const campaigns = [
@@ -23,8 +18,14 @@ const campaigns = [
     perLead: "£41",
     booked: 22,
     links: [
-      { platform: "meta", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
-      { platform: "google", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
+      {
+        platform: "meta",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
+      {
+        platform: "google",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
     ],
     primaryAction: "View page",
   },
@@ -38,8 +39,14 @@ const campaigns = [
     perLead: "£33",
     booked: 13,
     links: [
-      { platform: "meta", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
-      { platform: "google", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
+      {
+        platform: "meta",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
+      {
+        platform: "google",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
     ],
     primaryAction: "View page",
   },
@@ -53,8 +60,14 @@ const campaigns = [
     perLead: "£52",
     booked: 4,
     links: [
-      { platform: "meta", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
-      { platform: "google", url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS" },
+      {
+        platform: "meta",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
+      {
+        platform: "google",
+        url: "uag.com/a/JOHNS26uag.com/a/JOHNS26uag.com/a/JOHNS",
+      },
     ],
     primaryAction: "Resume",
   },
@@ -116,7 +129,9 @@ function CampaignCard({ campaign }) {
       <div className="flex items-center justify-between mb-4">
         <span
           className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-            isLive ? "bg-emerald-50 text-emerald-600" : "bg-gray-100 text-gray-400"
+            isLive
+              ? "bg-emerald-50 text-emerald-600"
+              : "bg-gray-100 text-gray-400"
           }`}
         >
           <span
@@ -162,13 +177,8 @@ function CampaignCard({ campaign }) {
           )}
           {campaign.primaryAction}
         </button>
-        <button
-          type="button"
-          className="flex-1 inline-flex items-center justify-center gap-1.5 text-sm font-medium text-gray-700 border border-gray-200 rounded-lg py-2 hover:bg-gray-50 transition-colors"
-        >
-          <FiEdit2 size={13} />
-          Edit
-        </button>
+
+        <EditCampainModal />
       </div>
     </div>
   );
@@ -178,23 +188,20 @@ function CampaignCard({ campaign }) {
 function Campaigns() {
   return (
     <div>
-      <div >
+      <div>
         {/* Header */}
         <div className="lg:flex items-start justify-between mb-6">
           <div>
-            <h1 className="font-serif text-3xl text-gray-900 mb-2">Campaigns</h1>
+            <h1 className="font-serif text-3xl text-gray-900 mb-2">
+              Campaigns
+            </h1>
             <p className="text-sm text-gray-500 max-w-xl leading-relaxed">
               Each campaign is a treatment offer with its own landing page, AI
               call script, and nurture sequence.
             </p>
           </div>
-          <button
-            type="button"
-            className="inline-flex items-center gap-1.5 bg-gray-900 text-white text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-800 transition-colors shrink-0"
-          >
-            <FiPlus size={14} />
-            New campaign
-          </button>
+
+          <NewCampainModal />
         </div>
 
         {/* Info banner */}
